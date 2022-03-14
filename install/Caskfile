@@ -12,6 +12,7 @@ cask "font-meslo-for-powerline"
 cask "google-chrome"
 cask "iterm2"
 cask "raycast"
+cask "stats"
 cask "visual-studio-code"
 cask "vlc"
 
