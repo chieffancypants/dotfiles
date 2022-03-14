@@ -11,11 +11,11 @@ export ACCEPT_EULA=Y
 
 all: $(OS)
 
-macos: sudo core-macos packages link
+macos: sudo core-macos packages omzsh link
 
-linux: core-linux link
+linux: core-linux omzsh link
 
-core-macos: brew bash git npm
+core-macos: brew bash git npm 
 
 core-linux:
 	apt-get update
@@ -86,6 +86,9 @@ cask-apps: brew
 
 node-packages: npm
 	eval $$(fnm env); npm install -g $(shell cat install/npmfile)
+
+omzsh:
+	sh -c "$$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 test:
 	eval $$(fnm env); bats test
