@@ -14,8 +14,8 @@ jobs:
         #os: [macos-11.0, ubuntu-latest]
 
     steps:
-      - name: Debugging with tmate
-        uses: mxschmitt/action-tmate@v3.11
+      # - name: Debugging with tmate
+      #   uses: mxschmitt/action-tmate@v3.11
 
       - name: Clean up installed software
         if: startsWith(matrix.os, 'macos')
@@ -41,10 +41,3 @@ jobs:
           else
             sudo make
           fi
-
-      - name: Verify runcom setup
-        run: source $HOME/.bash_profile
-
-      - name: Run tests
-        if: startsWith(matrix.os, 'macos')
-        run: make test
