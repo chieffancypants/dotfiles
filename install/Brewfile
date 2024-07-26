@@ -1,11 +1,10 @@
 tap "homebrew/bundle"
-tap "homebrew/core"
 tap "homebrew/services"
 
-brew "fnm"
 brew "python"
 brew "coreutils"
 brew "hexedit"
+brew "lotyp/formulae/dockutil"
 brew "md5sha1sum"
 brew "socat"
 brew "wget"

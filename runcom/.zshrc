@@ -87,4 +87,3 @@ alias gl='git log --show-signature'
 alias glp='git log -p --stat'
 alias gl1="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset %C(magenta)(%G?)' --abbrev-commit"
 
-eval "$(fnm env --use-on-cd)"
