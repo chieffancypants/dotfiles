@@ -8,6 +8,7 @@ on: [push]
 jobs:
   install:
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 60
     strategy:
       matrix:
         os: [macos-latest]
