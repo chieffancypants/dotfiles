@@ -27,10 +27,10 @@ jobs:
           brew cleanup --prune-prefix
           /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall.sh)"
 
-      - name: Download and install available system updates
-        if: startsWith(matrix.os, 'macos')
-        run: |
-          sudo softwareupdate -i -a
+      # - name: Download and install available system updates
+      #   if: startsWith(matrix.os, 'macos')
+      #   run: |
+      #     sudo softwareupdate -i -a
 
       - name: Clone this repository
         uses: actions/checkout@v2
