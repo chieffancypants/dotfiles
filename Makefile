@@ -15,7 +15,7 @@ macos: sudo core-macos packages omzsh link
 
 linux: core-linux omzsh link
 
-core-macos: brew bash git npm
+core-macos: brew bash git nvm
 
 core-linux:
 	apt-get update
@@ -35,7 +35,7 @@ ifndef GITHUB_ACTION
 	while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 endif
 
-packages: brew-packages cask-apps node-packages
+packages: node-packages brew-packages cask-apps
 
 link: stow-$(OS)
 	for FILE in $$(\ls -A runcom); do if [ -f $(HOME)/$$FILE -a ! -h $(HOME)/$$FILE ]; then \
@@ -55,7 +55,8 @@ brew:
 
 nvm:
 	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
-	source $(HOME)/.config/nvm/nvm.sh ;\
+	source $(HOME)/.config/nvm/nvm.sh;\
+	nvm install --lts
 
 bash: BASH=$(HOMEBREW_PREFIX)/bin/bash
 bash: SHELLS=/private/etc/shells
@@ -77,9 +78,6 @@ endif
 git: brew
 	brew install git git-extras
 
-npm: brew-packages
-	nvm install --lts
-
 brew-packages: brew
 	brew bundle --file=$(DOTFILES_DIR)/install/Brewfile || true
 
@@ -88,7 +86,8 @@ cask-apps: brew
 	for EXT in $$(cat install/Codefile); do code --install-extension $$EXT; done
 	xattr -d -r com.apple.quarantine ~/Library/QuickLook
 
-node-packages: npm
+node-packages: nvm
+	source $(HOME)/.config/nvm/nvm.sh;\
 	npm install -g $(shell cat install/npmfile)
 
 omzsh:
