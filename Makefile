@@ -15,7 +15,7 @@ macos: sudo core-macos packages omzsh link
 
 linux: core-linux omzsh link
 
-core-macos: brew bash git npm 
+core-macos: brew bash git npm
 
 core-linux:
 	apt-get update
@@ -53,6 +53,10 @@ unlink: stow-$(OS)
 brew:
 	is-executable brew || curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh | bash
 
+nvm:
+	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+	source $(HOME)/.config/nvm/nvm.sh ;\
+
 bash: BASH=$(HOMEBREW_PREFIX)/bin/bash
 bash: SHELLS=/private/etc/shells
 bash: brew
@@ -74,7 +78,7 @@ git: brew
 	brew install git git-extras
 
 npm: brew-packages
-	fnm install --lts
+	nvm install --lts
 
 brew-packages: brew
 	brew bundle --file=$(DOTFILES_DIR)/install/Brewfile || true
@@ -85,7 +89,7 @@ cask-apps: brew
 	xattr -d -r com.apple.quarantine ~/Library/QuickLook
 
 node-packages: npm
-	eval $$(fnm env); npm install -g $(shell cat install/npmfile)
+	npm install -g $(shell cat install/npmfile)
 
 omzsh:
 	sh -c "$$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
