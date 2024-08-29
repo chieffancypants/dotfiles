@@ -80,6 +80,9 @@ defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerTapGesture -
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerTapGesture -int 2
 defaults write NSGlobalDomain com.apple.trackpad.forceClick -bool true
 
+# Silent clicking
+defaults write com.apple.AppleMultitouchTrackpad ActuationStrength -int 0
+
 ###############################################################################
 # Finder                                                                      #
 ###############################################################################
@@ -144,6 +147,10 @@ defaults write com.apple.dock wvous-bl-corner -int 5
 
 # Don't show recently used applications in the Dock
 defaults write com.Apple.Dock show-recents -bool false
+
+# Autohide faster
+defaults write com.apple.dock autohide-time-modifier -float 0.25
+defaults write com.apple.dock autohide-delay -float 0
 
 ###############################################################################
 # Kill affected applications                                                  #

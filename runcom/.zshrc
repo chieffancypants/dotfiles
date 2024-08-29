@@ -79,11 +79,13 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export PATH="$PATH:$HOME/go/bin" # Added go's bin directory manually :(
-export PATH="$PATH:$HOME/.cargo/bin"
+export PATH="/opt/homebrew/bin:$PATH"
 export GPG_TTY=$(tty)
 
 alias gl='git log --show-signature'
 alias glp='git log -p --stat'
 alias gl1="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset %C(magenta)(%G?)' --abbrev-commit"
 
+HISTCONTROL=ignorespace:ignoredups
+HISTSIZE=100000
+SAVEHIST=$HISTSIZE

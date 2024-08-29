@@ -1,7 +1,7 @@
 [user]
 	name = Wes Cruver
 	email = chieffancypants@gmail.com
-	signingkey = 8728C89E
+	signingkey = 9B539CEE8728C89E
 
 [core]
 	excludesfile = ~/.config/git/ignore
@@ -20,3 +20,6 @@
 
 [gpg]
 	program = /usr/local/bin/gpg
+
+[commit]
+	gpgsign = true
