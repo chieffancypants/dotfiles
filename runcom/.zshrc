@@ -89,3 +89,18 @@ alias gl1="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset 
 HISTCONTROL=ignorespace:ignoredups
 HISTSIZE=100000
 SAVEHIST=$HISTSIZE
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Make sure the username is not shown in the agnoster prompt
+DEFAULT_USER=`whoami`
+
+# Use neovim for everything
+alias vim='nvim'
+export VISUAL=nvim
+export EDITOR='$VISUAL'
+
+# Alternate neovim setups
+alias nvchad='NVIM_APPNAME=nvim-nvchad nvim'
